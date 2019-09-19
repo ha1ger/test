@@ -32,6 +32,8 @@
             $('.mobile-container').hide();
             $('.pc-container').hide();
             $('.cannot-down').hide();
+            $('.mobile-ios-img').hide();
+            $('.mobile-android-img').hide();
             if (browser.versions.mobile) { //判断是否是移动设备打开。browser代码在下面
                 $('.mobile-container').show();
                 var ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
@@ -121,7 +123,7 @@
         <div class="pc-update-detail">
             <div class="pc-update-ios">
                 <div class="pc-update-header">
-                    <img src="./static/iOS.png" class="pc-ios-img">
+                    <img src="./static/IOS.png" class="pc-ios-img">
                     <div class="pc-ios-update-info">
                         <span>inhouse - 1.2.3 (Build 123) - 30.52 MB</span>
                         <span>Updated at: 2019-09-12 14:12</span>
