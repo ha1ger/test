@@ -3,14 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 
 <body>
     <div class="pc-container">
-        pc
+        <img src="./static/left.png" class="pc-left-img">
+        <img src="./static//right.png" class="pc-right-img">
+        <div class="pc-center">
+            <div class="pc-img-container">
+                <img src="./static/app.png" class="pc-app-img">
+            </div>
+            <div class="pc-img-container pc-code-container">
+                <img src="./static/code.png" class="pc-code-img">
+            </div>
+            <div class="pc-info">
+                <div class="pc-app-name">猪小萌</div>
+                <div class="pc-app-info">Scan the qrcode to download
+                    Open the url on your phone: https://fir.im/a63h</div>
+            </div>
+            <div class="pc-update-info">
+                <span>inhouse - 1.2.3 (Build 123) - 30.52 MB</span>
+                <span>Updated at: 2019-09-12 14:12</span>
+            </div>
+        </div>
+        <div class="pc-update-detail">
+            <div class="pc-update-ios">
+                <div class="pc-update-header">
+                    <img src="./static/IOS.png" class="pc-ios-img">
+                    <div class="pc-ios-update-info">
+                        <span>inhouse - 1.2.3 (Build 123) - 30.52 MB</span>
+                        <span>Updated at: 2019-09-12 14:12</span>
+                    </div>
+                </div>
+                <div class="pc-update-log">
+                    <div class="pc-log-title">Changelog</div>
+                    <div class="pc-log-detail">bug修复</div>
+                </div>
+            </div>
+            <div class="pc-update-android">
+                <div class="pc-update-header">
+                    <img src="./static/android.png" class="pc-android-img">
+                    <div class="pc-android-update-info">
+                        <span>inhouse - 1.2.3 (Build 123) - 30.52 MB</span>
+                        <span>Updated at: 2019-09-12 14:12</span>
+                    </div>
+                </div>
+                <div class="pc-update-log">
+                    <div class="pc-log-title">Changelog</div>
+                    <div class="pc-log-detail">bug修复</div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="mobile-container">
         mobile
@@ -71,8 +117,176 @@
             console.log('PC')
             $('.mobile-container').hide();
         }
+        var styleN = document.createElement("style");
+        var width = document.documentElement.clientWidth / 16;
+        styleN.innerHTML = 'html{font-size:' + width + 'px!important}';
+        document.head.appendChild(styleN);
+        console.log(width)
     }
-    $(function () {});
+    $(function () {
+        $('.pc-code-img').hover(function () {
+            $('.pc-code-img').css("width", "1.5rem");
+            $('.pc-code-img').css("height", "1.5rem");
+            $('.pc-code-img').css("transform", "translate(0.25rem,-0.25rem)");
+        }, function () {
+            $('.pc-code-img').css("width", "1rem");
+            $('.pc-code-img').css("height", "1rem");
+            $('.pc-code-img').css("transform", "translate(0rem,0rem)");
+        })
+    });
 </script>
 
 </html>
+<style>
+    .pc-left-img {
+        width: 2.5rem;
+        height: 8.33rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .pc-right-img {
+        width: 2.5rem;
+        height: 8.33rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .pc-center {
+        margin: 0 40%;
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pc-img-container {
+        width: 2.2rem;
+    }
+
+    .pc-code-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1.6rem;
+    }
+
+    .pc-app-img {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .pc-code-img {
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+    }
+
+    .pc-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        padding: 0 1.5rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid #DAE2E3;
+        line-height: 1.5;
+
+    }
+
+    .pc-app-name {
+        font-size: 0.3rem;
+        color: #505556;
+        margin-bottom: 0.2rem;
+    }
+
+    .pc-app-info {
+        font-size: 0.15rem;
+        color: #A9B1B3;
+    }
+
+    .pc-update-info {
+        margin-top: 0.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.15rem;
+        color: #A9B1B3;
+        line-height: 1.5;
+    }
+
+    .pc-update-detail {
+        width: 8rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #DAE2E3;
+    }
+
+    .pc-update-android {
+        width: 50%;
+    }
+
+    .pc-update-ios {
+        width: 50%;
+        border-right: 1px solid #DAE2E3;
+    }
+
+    .pc-update-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0.2rem 0.3rem;
+    }
+
+    .pc-android-img {
+        width: 0.4rem;
+        height: 0.4rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .pc-ios-img {
+        width: 0.4rem;
+        height: 0.4rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .pc-ios-update-info {
+        font-size: 0.1rem;
+        color: #A9B1B3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pc-android-update-info {
+        font-size: 0.1rem;
+        color: #A9B1B3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .pc-update-log{
+        padding: 0.4rem 0.3rem;
+        box-sizing: border-box;
+    }
+    .pc-log-title{
+        font-size: 0.2rem;
+        color:#505556;
+        margin-bottom: 0.33rem;
+    }
+    .pc-log-detail{
+        font-size: 0.14rem;
+        color:#A9B1B3;
+    }
+</style>
