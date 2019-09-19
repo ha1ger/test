@@ -30,8 +30,7 @@
         }
         window.onload = function () {
             if (browser.versions.mobile) { //判断是否是移动设备打开。browser代码在下面
-                $('.cannot-down').hide();
-                $('.pc-container').hide();
+                $('.mobile-container').hide();
                 var ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
                 if (ua.match(/MicroMessenger/i) == "micromessenger") {
                     //在微信中打开
@@ -49,20 +48,19 @@
                 }
                 if (browser.versions.ios) {
                     //是否在IOS浏览器打开
-                    $('.mobile-android-img').hide();
+                    $('.mobile-ios-img').show();
                     console.log('ios')
 
                 }
                 if (browser.versions.android) {
                     //是否在安卓浏览器打开
-                    $('.mobile-ios-img').hide();
+                    $('.mobile-android-img').show();
                     console.log('android')
                 }
             } else {
                 //否则就是PC浏览器打开
                 console.log('PC')
-                $('.cannot-down').hide();
-                $('.mobile-container').hide();
+                $('.pc-container').show();
             }
             var styleN = document.createElement("style");
             var width = document.documentElement.clientWidth / 16;
@@ -191,6 +189,10 @@
 
 </html>
 <style>
+    .pc-container {
+        display: none;
+    }
+
     .pc-left-img {
         width: 2.5rem;
         height: 8.33rem;
@@ -348,7 +350,9 @@
     }
 
     /* mobile */
-    .mobile-container {}
+    .mobile-container {
+        display: none;
+    }
 
     .mobile-left-img {
         width: 3rem;
@@ -448,6 +452,10 @@
     .mobile-update-log {
         font-size: 0.5rem;
         color: #A9B1B3;
+    }
+
+    .cannot-down {
+        display: none;
     }
 
     .toast {
