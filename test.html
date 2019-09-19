@@ -59,7 +59,45 @@
         </div>
     </div>
     <div class="mobile-container">
-        mobile
+        <img src="./static/left.png" class="mobile-left-img">
+        <img src="./static//right.png" class="mobile-right-img">
+        <div class="mobile-center">
+            <img src="./static//app.png" class="mobile-app-img">
+            <div class="mobile-app">
+                <img src="./static/android.png" class="mobile-android-img">
+                <img src="./static/iOS.png" class="mobile-ios-img">
+                <div class="mobile-app-name">猪小萌</div>
+            </div>
+            <div class="mobile-update-info">
+                <span>inhouse - 1.2.3 (Build 123) - 30.52 MB</span>
+                <span>Updated at: 2019-09-12 14:12</span>
+            </div>
+            <div class="downLoad">DownLoad</div>
+        </div>
+        <div class="mobile-update-detail">
+            <div class="mobile-update-title">Changelog</div>
+            <div class="mobile-update-log">bug修正</div>
+        </div>
+    </div>
+    <div class="cannot-down">
+        <div class="corner">
+            <img src="./static/corner.png" class="corner-img">
+            <span>请点击右上角</span>
+            <span>选择浏览器打开</span>
+        </div>
+        <div class="mobile-center cannot-down-center">
+            <img src="./static//app.png" class="mobile-app-img">
+            <div class="mobile-app cannot-down-app">
+                <img src="./static/android.png" class="mobile-android-img">
+                <img src="./static/iOS.png" class="mobile-ios-img">
+                <div class="mobile-app-name">猪小萌</div>
+            </div>
+            <div class="toast">微信/QQ内无法下载</div>
+        </div>
+        <div class="mobile-update-detail">
+            <div class="mobile-update-title">Changelog</div>
+            <div class="mobile-update-log">bug修正</div>
+        </div>
     </div>
 </body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
@@ -86,8 +124,9 @@
     }
     window.onload = function () {
         if (browser.versions.mobile) { //判断是否是移动设备打开。browser代码在下面
+            $('.cannot-down').hide();
             $('.pc-container').hide();
-            var ua = na$('.pc-container').hide();vigator.userAgent.toLowerCase(); //获取判断用的对象
+            var ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
             if (ua.match(/MicroMessenger/i) == "micromessenger") {
                 //在微信中打开
                 console.log('wx')
@@ -104,17 +143,19 @@
             }
             if (browser.versions.ios) {
                 //是否在IOS浏览器打开
+                $('.mobile-android-img').hide();
                 console.log('ios')
 
             }
             if (browser.versions.android) {
                 //是否在安卓浏览器打开
+                $('.mobile-ios-img').hide();
                 console.log('android')
-
             }
         } else {
             //否则就是PC浏览器打开
             console.log('PC')
+            $('.cannot-down').hide();
             $('.mobile-container').hide();
         }
         var styleN = document.createElement("style");
@@ -132,6 +173,17 @@
             $('.pc-code-img').css("width", "1rem");
             $('.pc-code-img').css("height", "1rem");
             $('.pc-code-img').css("transform", "translate(0rem,0rem)");
+        })
+        $('.downLoad').click(function () {
+            let ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger" || ua.match(/WeiBo/i) == "weibo" || ua
+                .match(/QQ/i) == "qq") {
+                //无法直接下载
+
+            }
+            $('.mobile-container').hide();
+                $('.pc-container').hide();
+                $('.cannot-down').show();
         })
     });
 </script>
@@ -182,6 +234,7 @@
         width: 1rem;
         height: 1rem;
         position: absolute;
+        /* transition: 0.5s ease-in-out; */
     }
 
     .pc-info {
@@ -276,17 +329,159 @@
         justify-content: center;
         align-items: center;
     }
-    .pc-update-log{
+
+    .pc-update-log {
         padding: 0.4rem 0.3rem;
         box-sizing: border-box;
     }
-    .pc-log-title{
+
+    .pc-log-title {
         font-size: 0.2rem;
-        color:#505556;
+        color: #505556;
         margin-bottom: 0.33rem;
     }
-    .pc-log-detail{
+
+    .pc-log-detail {
         font-size: 0.14rem;
-        color:#A9B1B3;
+        color: #A9B1B3;
+    }
+
+    /* mobile */
+    .mobile-container {}
+
+    .mobile-left-img {
+        width: 3rem;
+        height: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .mobile-right-img {
+        width: 3rem;
+        height: 10rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .mobile-center {
+        padding: 7rem 1rem;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #DAE2E3;
+    }
+
+    .mobile-app-img {
+        width: 5.2rem;
+        height: 5.2rem;
+    }
+
+    .mobile-app {
+        padding: 1rem 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        border-bottom: 1px solid #DAE2E3;
+    }
+
+    .mobile-android-img {
+        width: 1.2rem;
+        height: 1.2rem;
+        position: absolute;
+        left: 3rem;
+    }
+
+    .mobile-ios-img {
+        width: 1.2rem;
+        height: 1.2rem;
+        position: absolute;
+        left: 3rem;
+    }
+
+    .mobile-update-info {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 0.6rem;
+        color: #A9B1B3;
+        line-height: 1.8
+    }
+
+    .downLoad {
+        width: 8rem;
+        height: 1.8rem;
+        border-radius: 1.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #32B2A7;
+        color: #fff;
+        font-size: 0.6rem;
+    }
+
+    .mobile-update-detail {
+        padding: 2rem 1rem;
+    }
+
+    .mobile-update-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        color: #505556;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+
+    .mobile-update-log {
+        font-size: 0.5rem;
+        color: #A9B1B3;
+    }
+
+    .toast {
+        font-size: 0.6rem;
+        color: #32B2A7;
+    }
+
+    .cannot-down-app {
+        border: none;
+    }
+
+    .cannot-down-center {
+        padding: 9.5rem 1rem;
+        box-sizing: border-box;
+    }
+
+    .corner {
+        position: absolute;
+        top: 0.25rem;
+        right: 0.5rem;
+        width: 7rem;
+        height: 2.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.7rem;
+        color: #fff;
+    }
+
+    .corner-img {
+        width: 7rem;
+        height: 3.05rem;
+        position: absolute;
+        z-index: -1;
+        top: -0.25rem;
     }
 </style>
